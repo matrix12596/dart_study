@@ -25,12 +25,29 @@ void main(List<String> args) {
 
   //where使用方法
   //返回满足条件的元素
+  //返回的是 Iterable<String> 类型
+  /*
+  where() 方法：返回的是一个 惰性求值的 Iterable，而不是新的 List
+  为什么是 Iterable 而不是 List：
+    1.where() 是 Iterable 的扩展方法。
+    2.它不会立即创建新的 List，而是返回一个可迭代对象。
+    3.只有在遍历时才会执行筛选逻辑。
+    4.可以使用 toList() 方法将 Iterable 转换为 List。
+    5.可以使用 toSet() 方法将 Iterable 转换为 Set。
+    6.可以使用 toMap() 方法将 Iterable 转换为 Map。
+   */
 
   //返回所有以张开头的元素
   List l = students.where((item) {
     return item.toString().startsWith('张');
   }).toList();
   print('所有以张开头的元素: $l');
+
+  print(
+    students.where((item) {
+      return item.toString().startsWith('王');
+    }),
+  );
 
   print('-----------------');
   //列表的长度
