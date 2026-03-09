@@ -1,0 +1,42 @@
+/*
+  定义：Dart允许使用类型参数，限定类型的同时又让类型更加灵活，让代码更加健壮和维护性更强
+  场景：List类型只想存储String类型怎么办，函数中返回值希望和参数一个类型怎么办?
+  常见分类：泛型集合、泛型方法、泛型类
+ */
+
+main(List<String> args) {
+  //列表泛型 或者Map
+  List<String> list = [];
+  //list.add(1);
+  list.add("2");
+  //list.add(true);
+  //list.add([]);
+  print(list);
+
+  Map<String, int> map = {};
+  //map["name"]="张三";
+  map["age"] = 18;
+  //map["gender"]="男";
+  print(map);
+
+  getValue<String>("123");
+  printList<String>(["1", "2", "3"]);
+  Student<String> s = Student();
+  s.name = "张三";
+}
+
+//函数中的方法
+//T表示类型参数，可以是任意类型
+T getValue<T>(T value) {
+  return value;
+}
+
+void printList<T>(List<T> list) {
+  for (var i = 0; i < list.length; i++) {
+    print(list[i]);
+  }
+}
+
+class Student<T> {
+  T? name;
+}
